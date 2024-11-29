@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { FaClipboard, FaDownload, FaTrash } from "react-icons/fa"; // Import icons from react-icons
 import dorkTemplates from "../data/dorkTemplates";
+import additionalDorks from "../data/additionalDorks"; // Import additional dorks
 
 const DorkGenerator = () => {
   const [keywords, setKeywords] = useState("");
   const [domain, setDomain] = useState("example.com");
   const [customTemplate, setCustomTemplate] = useState("");
-  const [templates, setTemplates] = useState(dorkTemplates);
+  const [templates, setTemplates] = useState([...dorkTemplates, ...additionalDorks]); // Combine templates and additionalDorks
   const [generatedDorks, setGeneratedDorks] = useState([]);
 
   const handleAddTemplate = () => {
