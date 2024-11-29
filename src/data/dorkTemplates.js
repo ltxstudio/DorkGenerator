@@ -214,6 +214,154 @@ const dorkTemplates = [
     template: "inurl:/uploads/ filetype:png",
     description: "Searches for PNG image files in public uploads directories.",
   },
+  {
+    template: "site:{domain} filetype:conf",
+    description: "Searches for configuration files on a specific domain.",
+  },
+  {
+    template: "inurl:/admin/.git/ \"git\"",
+    description: "Searches for exposed Git repositories in admin directories.",
+  },
+  {
+    template: "inurl:/wp-includes/ \"wp-load.php\"",
+    description: "Searches for exposed WordPress load files.",
+  },
+  {
+    template: "filetype:log inurl:\"error_log\"",
+    description: "Searches for error log files in URLs.",
+  },
+  {
+    template: "inurl:/.env filetype:txt",
+    description: "Searches for exposed environment variable files in plain text format.",
+  },
+
+  // Search for specific file types or exposed credentials
+  {
+    template: "intitle:\"index of\" \"wp-config.php\"",
+    description: "Searches for exposed WordPress configuration files.",
+  },
+  {
+    template: "inurl:/admin/ config.php",
+    description: "Searches for configuration files in admin directories.",
+  },
+  {
+    template: "inurl:/.env filetype:json",
+    description: "Finds exposed environment files (JSON format).",
+  },
+  {
+    template: "inurl:/upload/ filetype:exe",
+    description: "Searches for uploaded executable files.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:pdf",
+    description: "Searches for PDF files in public uploads directories.",
+  },
+
+  // Search for sensitive application data
+  {
+    template: "inurl:/phpinfo.php",
+    description: "Searches for exposed PHP configuration information.",
+  },
+  {
+    template: "inurl:/admin/ \"login\"",
+    description: "Searches for login pages in admin directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"database.bak\"",
+    description: "Searches for open directories containing backup database files.",
+  },
+  {
+    template: "filetype:env intext:\"SECRET_KEY\"",
+    description: "Searches for exposed secret keys in environment files.",
+  },
+  {
+    template: "inurl:/wp-content/uploads/ \"index of\"",
+    description: "Searches for open directories in WordPress upload folders.",
+  },
+
+  // Search for exposed or outdated APIs
+  {
+    template: "inurl:/api/v1/ \"access_token\"",
+    description: "Searches for exposed API access tokens.",
+  },
+  {
+    template: "filetype:json inurl:/api/v2/ \"api_key\"",
+    description: "Searches for JSON files containing exposed API keys.",
+  },
+  {
+    template: "inurl:/swagger/api/ \"swagger.yaml\"",
+    description: "Finds Swagger YAML files exposed on public APIs.",
+  },
+  {
+    template: "filetype:php inurl:/api/ \"api_key\"",
+    description: "Searches for PHP files containing API keys in URLs.",
+  },
+
+  // Miscellaneous dorks for assets or specific content types
+  {
+    template: "intitle:\"index of\" \"downloads\"",
+    description: "Searches for open directories containing downloadable files.",
+  },
+  {
+    template: "inurl:/assets/ \"main.css\"",
+    description: "Searches for exposed CSS files in public assets directories.",
+  },
+  {
+    template: "filetype:md inurl:\"README\"",
+    description: "Searches for README Markdown files exposed on the web.",
+  },
+  {
+    template: "inurl:/public/ filetype:js",
+    description: "Searches for JavaScript files in public directories.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:gif",
+    description: "Searches for GIF image files in public uploads directories.",
+  },
+
+  // Search for additional vulnerabilities and server information
+  {
+    template: "inurl:/cgi-bin/ filetype:txt",
+    description: "Searches for exposed CGI scripts in text format.",
+  },
+  {
+    template: "intitle:\"index of\" \"config.json\"",
+    description: "Searches for open directories containing configuration JSON files.",
+  },
+  {
+    template: "filetype:ini inurl:\"configuration\"",
+    description: "Searches for configuration INI files.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:mp4",
+    description: "Searches for MP4 video files in public uploads directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"phpmyadmin\"",
+    description: "Searches for open directories containing phpMyAdmin files.",
+  },
+
+  // Search for sensitive user data or personal information
+  {
+    template: "inurl:\"email\" filetype:xls",
+    description: "Searches for Excel files containing email addresses.",
+  },
+  {
+    template: "intitle:\"index of\" \"contact.txt\"",
+    description: "Searches for open directories containing contact information files.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:vcf",
+    description: "Searches for VCF (vCard) files in public uploads directories.",
+  },
+  {
+    template: "filetype:csv inurl:\"sales\"",
+    description: "Finds CSV files containing sales data.",
+  },
+  {
+    template: "filetype:json inurl:\"user\"",
+    description: "Finds JSON files containing user information.",
+  },
 ];
 
 export default dorkTemplates;
