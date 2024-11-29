@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import dorkTemplates from "../data/dorkTemplates";
-import { ReactTooltip } from "react-tooltip";  // Corrected import statement
+import ReactTooltip from "react-tooltip/dist/react-tooltip.min.js";
 
 const DorkGenerator = () => {
   const [keywords, setKeywords] = useState("");
