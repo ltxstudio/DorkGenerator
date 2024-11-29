@@ -2,6 +2,9 @@ import React from "react";
 import DorkGenerator from "./components/DorkGenerator";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import About from "./components/About";
+import Features from "./components/Features";
+import FAQ from "./components/FAQ";
 
 const App = () => {
   return (
@@ -10,6 +13,9 @@ const App = () => {
       <main className="flex-grow p-4">
         <DorkGenerator />
       </main>
+      <About />
+      <Features />
+      <FAQ />
       <Footer />
     </div>
   );
