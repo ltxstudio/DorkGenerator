@@ -1,66 +1,17 @@
 import React, { useState } from "react";
-import { Tooltip } from "react-tooltip";
+import dorkTemplates from "../data/dorkTemplates";
 
 const DorkGenerator = () => {
   const [keywords, setKeywords] = useState("");
   const [domain, setDomain] = useState("example.com");
   const [customTemplate, setCustomTemplate] = useState("");
-  const [dorkTemplates, setDorkTemplates] = useState([
-    {
-      template: "site:{domain} inurl:{keyword}",
-      description: "Searches for pages on a domain containing keywords in the URL.",
-    },
-    {
-      template: "intitle:{keyword} filetype:pdf",
-      description: "Finds PDF files with keywords in the title.",
-    },
-    {
-      template: "site:{domain} \"{keyword}\"",
-      description: "Searches for exact keyword matches on a specific domain.",
-    },
-    {
-      template: "{keyword} ext:doc",
-      description: "Searches for Word documents containing keywords.",
-    },
-    {
-      template: "{keyword} ext:xls",
-      description: "Searches for Excel spreadsheets containing keywords.",
-    },
-    {
-      template: "site:{domain} intext:{keyword}",
-      description: "Searches for keywords in the text on a website.",
-    },
-    {
-      template: "filetype:pdf {keyword}",
-      description: "Finds PDF files containing the keyword.",
-    },
-    {
-      template: "\"index of\" {keyword}",
-      description: "Finds directory listings related to the keyword.",
-    },
-    {
-      template: "site:{domain} ext:php {keyword}",
-      description: "Searches for PHP files on a domain with keywords.",
-    },
-    {
-      template: "site:{domain} intitle:admin",
-      description: "Finds admin pages on a specific domain.",
-    },
-    {
-      template: "inurl:login {keyword}",
-      description: "Searches for login pages containing keywords.",
-    },
-    {
-      template: "inurl:password filetype:log",
-      description: "Finds log files containing passwords.",
-    },
-  ]);
+  const [templates, setTemplates] = useState(dorkTemplates);
   const [generatedDorks, setGeneratedDorks] = useState([]);
 
   const handleAddTemplate = () => {
     if (customTemplate.trim() !== "") {
-      setDorkTemplates([
-        ...dorkTemplates,
+      setTemplates([
+        ...templates,
         { template: customTemplate, description: "Custom template added by user." },
       ]);
       setCustomTemplate("");
@@ -72,7 +23,7 @@ const DorkGenerator = () => {
     const dorks = [];
 
     keywordList.forEach((keyword) => {
-      dorkTemplates.forEach(({ template }) => {
+      templates.forEach(({ template }) => {
         dorks.push(template.replace("{keyword}", keyword).replace("{domain}", domain));
       });
     });
@@ -138,9 +89,11 @@ const DorkGenerator = () => {
           <div>
             <h3 className="text-lg font-bold mb-2">Templates:</h3>
             <ul className="list-disc pl-5 space-y-1">
-              {dorkTemplates.map(({ template, description }, index) => (
+              {templates.map(({ template, description }, index) => (
                 <li key={index} className="text-sm">
-                  <Tooltip content={description}>{template}</Tooltip>
+                  <span className="tooltip" title={description}>
+                    {template}
+                  </span>
                 </li>
               ))}
             </ul>
