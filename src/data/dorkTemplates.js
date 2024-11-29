@@ -840,6 +840,134 @@ const dorkTemplates = [
     template: "inurl:/users/ filetype:json",
     description: "Searches for exposed JSON files containing user-related data.",
   },
+  {
+    template: "site:{domain} inurl:{keyword} ext:php",
+    description: "Searches for PHP files containing a keyword within the URL of a specific domain.",
+  },
+  {
+    template: "site:{domain} inurl:{keyword} ext:html",
+    description: "Searches for HTML files containing a keyword in the URL of a specific domain.",
+  },
+  {
+    template: "site:{domain} inurl:{keyword} ext:js",
+    description: "Searches for JavaScript files containing a keyword in the URL of a specific domain.",
+  },
+  
+  // Searching for specific types of files within the URL
+  {
+    template: "site:{domain} inurl:{keyword} filetype:pdf",
+    description: "Searches for PDF files containing a keyword in the URL of a specific domain.",
+  },
+  {
+    template: "site:{domain} inurl:{keyword} filetype:txt",
+    description: "Searches for text files containing a keyword in the URL of a specific domain.",
+  },
+  
+  // Searching for pages with specific titles
+  {
+    template: "site:{domain} intitle:{keyword}",
+    description: "Searches for pages on a specific domain with a keyword in the page title.",
+  },
+  {
+    template: "site:{domain} intitle:\"login\"",
+    description: "Searches for login pages on a specific domain.",
+  },
+  {
+    template: "site:{domain} intitle:\"admin\"",
+    description: "Searches for admin pages on a specific domain.",
+  },
+  
+  // Searching for specific file types containing keywords
+  {
+    template: "filetype:{ext} {keyword}",
+    description: "Searches for files of a specific type (e.g., PDF, DOC, XLS) containing the specified keyword.",
+  },
+  {
+    template: "filetype:{ext} inurl:{keyword}",
+    description: "Searches for files of a specific type with a keyword in the URL.",
+  },
+  
+  // Searching for specific content inside a file or page
+  {
+    template: "site:{domain} intext:{keyword}",
+    description: "Searches for pages on a domain containing the specified keyword in the page content.",
+  },
+  {
+    template: "filetype:log intext:{keyword}",
+    description: "Searches for log files containing a keyword in their content.",
+  },
+  
+  // Searching for specific keywords in specific directories
+  {
+    template: "site:{domain} inurl:/admin/ {keyword}",
+    description: "Searches for pages within the /admin/ directory of a specific domain containing a keyword.",
+  },
+  {
+    template: "site:{domain} inurl:/config/ {keyword}",
+    description: "Searches for pages within the /config/ directory of a specific domain containing a keyword.",
+  },
+  
+  // Searching for specific types of vulnerabilities
+  {
+    template: "inurl:/wp-admin/ {keyword}",
+    description: "Searches for WordPress admin pages with a specified keyword.",
+  },
+  {
+    template: "site:{domain} inurl:\"/phpmyadmin/\" {keyword}",
+    description: "Searches for phpMyAdmin pages on a domain containing a keyword.",
+  },
+  {
+    template: "site:{domain} inurl:\"/cgi-bin/\" {keyword}",
+    description: "Searches for exposed CGI scripts containing a keyword on a specific domain.",
+  },
+  
+  // Searching for exposed credentials or keys
+  {
+    template: "filetype:env intext:\"AWS_ACCESS_KEY_ID\"",
+    description: "Searches for environment files containing exposed AWS Access Key IDs.",
+  },
+  {
+    template: "filetype:env intext:\"FTP_PASSWORD\"",
+    description: "Searches for environment files containing exposed FTP passwords.",
+  },
+  
+  // Searching for directories or data dumps
+  {
+    template: "intitle:\"index of\" {keyword}",
+    description: "Searches for open directories with the specified keyword in their title.",
+  },
+  {
+    template: "inurl:\"/backup/\" {keyword}",
+    description: "Searches for backup directories containing a keyword in the URL.",
+  },
+  {
+    template: "inurl:\"/data/\" {keyword}",
+    description: "Searches for data directories containing a keyword in the URL.",
+  },
+  
+  // Searching for exposed databases and dumps
+  {
+    template: "filetype:sql inurl:{keyword}",
+    description: "Searches for SQL files containing a keyword in their URL.",
+  },
+  {
+    template: "inurl:\"/dump/\" {keyword}",
+    description: "Searches for exposed database dump directories containing a keyword.",
+  },
+  
+  // Searching for files in specific paths
+  {
+    template: "site:{domain} inurl:/uploads/ {keyword}",
+    description: "Searches for files in the /uploads/ directory of a specific domain containing a keyword.",
+  },
+  {
+    template: "site:{domain} inurl:/images/ {keyword}",
+    description: "Searches for image files in the /images/ directory of a specific domain containing a keyword.",
+  },
+  {
+    template: "site:{domain} inurl:/docs/ {keyword}",
+    description: "Searches for documentation files in the /docs/ directory of a specific domain containing a keyword.",
+  },
 ];
 
 export default dorkTemplates;
