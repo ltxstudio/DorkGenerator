@@ -53,6 +53,15 @@ const DorkGenerator = () => {
     <div className="bg-gradient-to-r from-indigo-600 to-purple-700 p-8 rounded-lg shadow-xl text-white max-w-4xl mx-auto">
       <h2 className="text-4xl font-bold mb-6 text-center">Dork Generator</h2>
 
+      <div className="mb-6">
+        <p className="text-lg">
+          This tool helps you generate search engine dorks using keywords and domains. Dorks can be used for advanced search queries, allowing you to find specific information on websites.
+        </p>
+        <p className="text-lg mt-4">
+          **How to use**: Enter a list of keywords (separated by commas) and a domain (like "example.com"). You can also add custom templates for advanced queries.
+        </p>
+      </div>
+
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <textarea
@@ -97,10 +106,14 @@ const DorkGenerator = () => {
             <ul className="space-y-3">
               {templates.map(({ template, description }, index) => (
                 <li key={index} className="text-sm flex items-center justify-between">
-                  <span>{template}</span>
+                  <div>
+                    <span className="font-semibold">{template}</span>
+                    <p className="text-xs text-gray-300 mt-1">{description}</p>
+                  </div>
                   <span
-                    className="text-xs text-gray-300 ml-2"
-                    title={description} // Tooltips on hover
+                    className="text-xs text-gray-300 ml-2 cursor-pointer"
+                    title="Click for more details"
+                    onClick={() => alert(`How to use: ${description}`)} // Simple interaction for more instructions
                   >
                     ℹ️
                   </span>
