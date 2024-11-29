@@ -44,6 +44,10 @@ const DorkGenerator = () => {
     link.click();
   };
 
+  const clearGeneratedDorks = () => {
+    setGeneratedDorks([]);
+  };
+
   return (
     <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg shadow-lg text-white">
       <h2 className="text-3xl font-bold mb-6 text-center">Dork Generator</h2>
@@ -90,9 +94,10 @@ const DorkGenerator = () => {
             <h3 className="text-lg font-bold mb-2">Templates:</h3>
             <ul className="list-disc pl-5 space-y-1">
               {templates.map(({ template, description }, index) => (
-                <li key={index} className="text-sm">
-                  <span className="tooltip" title={description}>
+                <li key={index} className="text-sm relative group">
+                  <span className="cursor-pointer">
                     {template}
+                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">{description}</span>
                   </span>
                 </li>
               ))}
@@ -124,6 +129,12 @@ const DorkGenerator = () => {
             onClick={exportToFile}
           >
             Export to File
+          </button>
+          <button
+            className="mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
+            onClick={clearGeneratedDorks}
+          >
+            Clear All Dorks
           </button>
         </div>
       )}
