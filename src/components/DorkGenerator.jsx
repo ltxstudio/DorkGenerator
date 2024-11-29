@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { FaClipboard, FaDownload, FaTrash } from "react-icons/fa"; // Import icons from react-icons
 import dorkTemplates from "../data/dorkTemplates";
-import ReactTooltip from "react-tooltip/dist/react-tooltip.min.js";
 
 const DorkGenerator = () => {
   const [keywords, setKeywords] = useState("");
@@ -52,7 +52,7 @@ const DorkGenerator = () => {
   return (
     <div className="bg-gradient-to-r from-indigo-600 to-purple-700 p-8 rounded-lg shadow-xl text-white max-w-4xl mx-auto">
       <h2 className="text-4xl font-bold mb-6 text-center">Dork Generator</h2>
-      
+
       <div className="grid gap-6 md:grid-cols-2">
         <div>
           <textarea
@@ -96,15 +96,14 @@ const DorkGenerator = () => {
             <h3 className="text-lg font-semibold mb-4">Available Templates:</h3>
             <ul className="space-y-3">
               {templates.map(({ template, description }, index) => (
-                <li key={index} className="text-sm">
+                <li key={index} className="text-sm flex items-center justify-between">
+                  <span>{template}</span>
                   <span
-                    className="cursor-pointer relative"
-                    data-tip={description}
-                    data-for={`template-tooltip-${index}`} // Unique ID for each tooltip
+                    className="text-xs text-gray-300 ml-2"
+                    title={description} // Tooltips on hover
                   >
-                    {template}
+                    ℹ️
                   </span>
-                  <ReactTooltip id={`template-tooltip-${index}`} place="top" effect="solid" />
                 </li>
               ))}
             </ul>
@@ -123,7 +122,7 @@ const DorkGenerator = () => {
                   className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                   onClick={() => copyToClipboard(dork)}
                 >
-                  Copy
+                  <FaClipboard /> Copy
                 </button>
               </li>
             ))}
@@ -134,13 +133,13 @@ const DorkGenerator = () => {
               className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 focus:ring-2 focus:ring-red-500"
               onClick={exportToFile}
             >
-              Export to File
+              <FaDownload /> Export to File
             </button>
             <button
               className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
               onClick={clearGeneratedDorks}
             >
-              Clear All Dorks
+              <FaTrash /> Clear All Dorks
             </button>
           </div>
         </div>
