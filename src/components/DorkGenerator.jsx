@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import dorkTemplates from "../data/dorkTemplates";
+import ReactTooltip from "react-tooltip";
 
 const DorkGenerator = () => {
   const [keywords, setKeywords] = useState("");
@@ -49,27 +50,27 @@ const DorkGenerator = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg shadow-lg text-white">
-      <h2 className="text-3xl font-bold mb-6 text-center">Dork Generator</h2>
+    <div className="bg-gradient-to-r from-indigo-600 to-purple-700 p-8 rounded-lg shadow-xl text-white max-w-4xl mx-auto">
+      <h2 className="text-4xl font-bold mb-6 text-center">Dork Generator</h2>
       
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         <div>
           <textarea
-            className="w-full p-3 mb-4 border border-gray-300 rounded text-gray-800"
+            className="w-full p-4 mb-6 border-2 border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500"
             rows="4"
             placeholder="Enter keywords, separated by commas"
             value={keywords}
             onChange={(e) => setKeywords(e.target.value)}
           ></textarea>
           <input
-            className="w-full p-3 mb-4 border border-gray-300 rounded text-gray-800"
+            className="w-full p-4 mb-6 border-2 border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500"
             type="text"
             placeholder="Enter domain (e.g., example.com)"
             value={domain}
             onChange={(e) => setDomain(e.target.value)}
           />
           <button
-            className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full"
+            className="bg-green-600 text-white px-6 py-3 rounded-lg w-full hover:bg-green-700 focus:ring-2 focus:ring-green-500"
             onClick={generateDorks}
           >
             Generate Dorks
@@ -78,27 +79,32 @@ const DorkGenerator = () => {
 
         <div>
           <textarea
-            className="w-full p-3 mb-4 border border-gray-300 rounded text-gray-800"
+            className="w-full p-4 mb-6 border-2 border-gray-300 rounded-lg text-gray-900 focus:ring-2 focus:ring-indigo-500"
             rows="4"
             placeholder="Add custom dork template (e.g., site:{domain} {keyword})"
             value={customTemplate}
             onChange={(e) => setCustomTemplate(e.target.value)}
           ></textarea>
           <button
-            className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 w-full mb-4"
+            className="bg-yellow-500 text-white px-6 py-3 rounded-lg w-full hover:bg-yellow-600 focus:ring-2 focus:ring-yellow-400"
             onClick={handleAddTemplate}
           >
             Add Custom Template
           </button>
-          <div>
-            <h3 className="text-lg font-bold mb-2">Templates:</h3>
-            <ul className="list-disc pl-5 space-y-1">
+
+          <div className="mt-6">
+            <h3 className="text-lg font-semibold mb-4">Available Templates:</h3>
+            <ul className="space-y-3">
               {templates.map(({ template, description }, index) => (
-                <li key={index} className="text-sm relative group">
-                  <span className="cursor-pointer">
+                <li key={index} className="text-sm">
+                  <span
+                    className="cursor-pointer relative"
+                    data-tip={description}
+                    data-for="template-tooltip"
+                  >
                     {template}
-                    <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">{description}</span>
                   </span>
+                  <ReactTooltip id="template-tooltip" place="top" effect="solid" />
                 </li>
               ))}
             </ul>
@@ -107,16 +113,14 @@ const DorkGenerator = () => {
       </div>
 
       {generatedDorks.length > 0 && (
-        <div className="mt-6">
-          <h3 className="text-2xl font-bold mb-4">Generated Dorks</h3>
-          <ul className="list-disc pl-5 space-y-2">
+        <div className="mt-8">
+          <h3 className="text-2xl font-bold mb-6">Generated Dorks</h3>
+          <ul className="space-y-4">
             {generatedDorks.map((dork, index) => (
-              <li key={index} className="flex items-center space-x-2">
-                <span className="block p-2 bg-gray-100 text-gray-800 rounded flex-grow">
-                  {dork}
-                </span>
+              <li key={index} className="flex items-center justify-between bg-gray-800 p-4 rounded-lg">
+                <span className="flex-grow">{dork}</span>
                 <button
-                  className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
                   onClick={() => copyToClipboard(dork)}
                 >
                   Copy
@@ -124,18 +128,21 @@ const DorkGenerator = () => {
               </li>
             ))}
           </ul>
-          <button
-            className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-            onClick={exportToFile}
-          >
-            Export to File
-          </button>
-          <button
-            className="mt-4 bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600"
-            onClick={clearGeneratedDorks}
-          >
-            Clear All Dorks
-          </button>
+
+          <div className="mt-6 flex space-x-4">
+            <button
+              className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 focus:ring-2 focus:ring-red-500"
+              onClick={exportToFile}
+            >
+              Export to File
+            </button>
+            <button
+              className="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 focus:ring-2 focus:ring-gray-500"
+              onClick={clearGeneratedDorks}
+            >
+              Clear All Dorks
+            </button>
+          </div>
         </div>
       )}
     </div>
