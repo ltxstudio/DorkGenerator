@@ -100,11 +100,11 @@ const DorkGenerator = () => {
                   <span
                     className="cursor-pointer relative"
                     data-tip={description}
-                    data-for="template-tooltip"
+                    data-for={`template-tooltip-${index}`} // Unique ID for each tooltip
                   >
                     {template}
                   </span>
-                  <ReactTooltip id="template-tooltip" place="top" effect="solid" />
+                  <ReactTooltip id={`template-tooltip-${index}`} place="top" effect="solid" />
                 </li>
               ))}
             </ul>
