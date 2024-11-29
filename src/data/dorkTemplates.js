@@ -362,6 +362,484 @@ const dorkTemplates = [
     template: "filetype:json inurl:\"user\"",
     description: "Finds JSON files containing user information.",
   },
+  {
+    template: "site:{domain} inurl:/user/ filetype:xml",
+    description: "Finds exposed user data in XML files on a specific domain.",
+  },
+  {
+    template: "intitle:\"index of\" \"user_info.csv\"",
+    description: "Searches for open directories containing user information in CSV format.",
+  },
+  {
+    template: "inurl:/admin/ \"configuration\" filetype:json",
+    description: "Searches for configuration JSON files within admin directories.",
+  },
+  {
+    template: "inurl:/api/v1/ \"access_key\"",
+    description: "Finds exposed API access keys in v1 API URLs.",
+  },
+  {
+    template: "site:{domain} filetype:cfg",
+    description: "Searches for configuration files with .cfg extension on a specific domain.",
+  },
+
+  // Searching for exposed backups or sensitive files
+  {
+    template: "intitle:\"index of\" \"backup.zip\"",
+    description: "Searches for open directories containing backup ZIP files.",
+  },
+  {
+    template: "filetype:bak inurl:\"backup\"",
+    description: "Searches for backup files with .bak extension in URLs.",
+  },
+  {
+    template: "inurl:/backup/ filetype:tar",
+    description: "Searches for TAR archive files in backup directories.",
+  },
+  {
+    template: "filetype:sql inurl:\"db_backup\"",
+    description: "Finds SQL database backup files in URLs.",
+  },
+  {
+    template: "intitle:\"index of\" \"mongodb_backup\"",
+    description: "Searches for open directories containing MongoDB backup files.",
+  },
+
+  // Searching for exposed web services, scripts, or services
+  {
+    template: "inurl:/webservice/ \"API key\"",
+    description: "Searches for exposed API keys in web service URLs.",
+  },
+  {
+    template: "inurl:/restapi/ \"access_token\"",
+    description: "Finds exposed access tokens in RESTful API URLs.",
+  },
+  {
+    template: "filetype:php inurl:/service/ \"api_secret\"",
+    description: "Searches for exposed API secrets in PHP files under service directories.",
+  },
+  {
+    template: "inurl:/soap/ \"WSDL\"",
+    description: "Searches for exposed WSDL (Web Service Description Language) files in SOAP web services.",
+  },
+  {
+    template: "intitle:\"index of\" \"swagger.yaml\"",
+    description: "Searches for exposed Swagger YAML documentation files in open directories.",
+  },
+
+  // Searching for exposed credentials and sensitive data
+  {
+    template: "inurl:/config/ \"db_password\"",
+    description: "Searches for exposed database password information in config files.",
+  },
+  {
+    template: "filetype:env intext:\"API_SECRET\"",
+    description: "Searches for environment files (.env) containing API secret keys.",
+  },
+  {
+    template: "inurl:/uploads/ \"AWS_ACCESS_KEY\"",
+    description: "Searches for uploaded files that contain AWS access keys.",
+  },
+  {
+    template: "intitle:\"index of\" \"secrets.json\"",
+    description: "Searches for exposed JSON files containing secrets in open directories.",
+  },
+  {
+    template: "inurl:/admin/.git/ \"git\"",
+    description: "Searches for exposed Git repositories in admin directories.",
+  },
+
+  // Searching for exposed administrative or login pages
+  {
+    template: "inurl:/admin/ \"login.php\"",
+    description: "Finds admin login pages within admin directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"admin_login\"",
+    description: "Searches for open directories containing admin login pages.",
+  },
+  {
+    template: "site:{domain} inurl:/admin/ \"login\"",
+    description: "Searches for admin login pages on a specific domain.",
+  },
+  {
+    template: "intitle:\"index of\" \"admin_config\"",
+    description: "Searches for open directories containing admin configuration files.",
+  },
+
+  // Searching for exposed log or error files
+  {
+    template: "inurl:/logs/ filetype:log",
+    description: "Searches for log files in public log directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"error_log\"",
+    description: "Searches for open directories containing error logs.",
+  },
+  {
+    template: "inurl:/admin/logs/ filetype:log",
+    description: "Searches for log files in admin log directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"access_log\"",
+    description: "Searches for open directories containing access logs.",
+  },
+
+  // Searching for sensitive user data or credentials in file paths
+  {
+    template: "inurl:/users/ filetype:csv",
+    description: "Searches for user-related CSV files in URLs.",
+  },
+  {
+    template: "intitle:\"index of\" \"admin_users.txt\"",
+    description: "Searches for open directories containing admin user text files.",
+  },
+  {
+    template: "filetype:json inurl:/user/ \"password\"",
+    description: "Searches for JSON files containing passwords in user directories.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:xls",
+    description: "Searches for exposed Excel files in public uploads directories.",
+  },
+
+  // Searching for exposed application files or assets
+  {
+    template: "intitle:\"index of\" \"application.json\"",
+    description: "Searches for open directories containing application configuration JSON files.",
+  },
+  {
+    template: "inurl:/assets/ filetype:scss",
+    description: "Searches for SCSS (Sass) files exposed in public asset directories.",
+  },
+  {
+    template: "inurl:/scripts/ filetype:js",
+    description: "Searches for exposed JavaScript files in public scripts directories.",
+  },
+  {
+    template: "inurl:/css/ filetype:css",
+    description: "Searches for exposed CSS files in public directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"uploads.zip\"",
+    description: "Searches for open directories containing ZIP files in upload directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"user_data.json\"",
+    description: "Searches for open directories containing user data in JSON format.",
+  },
+  {
+    template: "filetype:txt inurl:\"passwords\"",
+    description: "Searches for plain text files containing the word 'passwords' in the URL.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:pdf",
+    description: "Searches for PDF files in publicly exposed uploads directories.",
+  },
+  {
+    template: "inurl:/secure/ filetype:xml",
+    description: "Searches for exposed XML files in secure directories.",
+  },
+
+  // Exposed backup files or configuration dumps
+  {
+    template: "inurl:/backup/ filetype:tar.gz",
+    description: "Finds TAR.GZ backup archive files in exposed backup directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"config.json\"",
+    description: "Searches for open directories containing configuration JSON files.",
+  },
+  {
+    template: "inurl:/dump/ filetype:sql",
+    description: "Searches for SQL dump files exposed in public dump directories.",
+  },
+  {
+    template: "inurl:/backups/ filetype:zip",
+    description: "Searches for ZIP backup files in publicly exposed backup directories.",
+  },
+
+  // Searching for exposed APIs and services
+  {
+    template: "inurl:/api/ \"api_key\"",
+    description: "Searches for URLs containing exposed API keys in public API endpoints.",
+  },
+  {
+    template: "filetype:env intext:\"DATABASE_PASSWORD\"",
+    description: "Finds exposed environment files containing database passwords.",
+  },
+  {
+    template: "inurl:/wp-json/ \"wp-json\"",
+    description: "Searches for exposed WordPress JSON API endpoints.",
+  },
+  {
+    template: "intitle:\"index of\" \"swagger.json\"",
+    description: "Searches for open directories containing Swagger documentation JSON files.",
+  },
+
+  // Searching for vulnerabilities, sensitive configurations, and secrets
+  {
+    template: "intitle:\"index of\" \"admin_config.php\"",
+    description: "Finds open directories containing exposed admin configuration PHP files.",
+  },
+  {
+    template: "inurl:/cgi-bin/ \"error_log\"",
+    description: "Searches for exposed CGI scripts that may return sensitive error log data.",
+  },
+  {
+    template: "filetype:bak inurl:\"config_backup\"",
+    description: "Searches for backup configuration files with the .bak extension.",
+  },
+  {
+    template: "intitle:\"index of\" \"db_config.php\"",
+    description: "Searches for open directories containing database configuration PHP files.",
+  },
+
+  // Searching for exposed server information and headers
+  {
+    template: "inurl:/server-status \"Apache\"",
+    description: "Searches for exposed Apache server status pages that contain detailed information.",
+  },
+  {
+    template: "inurl:/server-status \"nginx\"",
+    description: "Searches for exposed Nginx server status pages that contain detailed server information.",
+  },
+  {
+    template: "intitle:\"index of\" \"nginx.conf\"",
+    description: "Searches for open directories containing exposed Nginx configuration files.",
+  },
+  {
+    template: "inurl:/server-info \"Apache Server\"",
+    description: "Finds Apache server info pages with exposed server details.",
+  },
+
+  // Searching for vulnerable services or pages
+  {
+    template: "inurl:/wp-content/ \"wp-config.php\"",
+    description: "Searches for exposed WordPress configuration files under the wp-content directory.",
+  },
+  {
+    template: "inurl:/phpmyadmin/ intext:\"Welcome to phpMyAdmin\"",
+    description: "Searches for exposed phpMyAdmin pages, which may indicate vulnerable web databases.",
+  },
+  {
+    template: "inurl:/phpmyadmin/ \"error\"",
+    description: "Searches for phpMyAdmin URLs that expose error messages, which may help identify vulnerabilities.",
+  },
+  {
+    template: "inurl:/admin/ \"login\"",
+    description: "Searches for exposed admin login pages across websites.",
+  },
+
+  // Searching for exposed files with sensitive data or personal info
+  {
+    template: "intitle:\"index of\" \"email_list.txt\"",
+    description: "Searches for open directories containing email list text files.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:csv",
+    description: "Searches for exposed CSV files in public uploads directories, which might contain personal or sensitive data.",
+  },
+  {
+    template: "inurl:/data/ filetype:json",
+    description: "Searches for JSON files containing potentially sensitive data exposed in public data directories.",
+  },
+  {
+    template: "inurl:/logs/ filetype:log",
+    description: "Searches for log files in public logs directories, which might contain sensitive information or errors.",
+  },
+
+  // Searching for exposed source code or application logic
+  {
+    template: "inurl:/scripts/ filetype:js",
+    description: "Searches for exposed JavaScript files in public script directories.",
+  },
+  {
+    template: "inurl:/includes/ filetype:php",
+    description: "Searches for exposed PHP files in public include directories.",
+  },
+  {
+    template: "filetype:py inurl:/scripts/ \"def\"",
+    description: "Searches for Python script files in public directories that may contain sensitive functions or logic.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:exe",
+    description: "Searches for executable files in uploaded file directories, potentially harmful files.",
+  },
+
+  // Miscellaneous dorks for exposed assets or web directories
+  {
+    template: "intitle:\"index of\" \"assets/\"",
+    description: "Searches for open directories containing public assets like images, CSS, JavaScript files.",
+  },
+  {
+    template: "inurl:/public/ filetype:css",
+    description: "Searches for exposed CSS files in public directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"images/\"",
+    description: "Finds open directories containing image files like JPG, PNG, or GIF.",
+  },
+  {
+    template: "inurl:/files/ filetype:pdf",
+    description: "Searches for PDF files in exposed file directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"config.yaml\"",
+    description: "Searches for open directories containing exposed YAML configuration files.",
+  },
+  {
+    template: "inurl:/uploads/ filetype:log",
+    description: "Searches for log files in public uploads directories that might contain sensitive data or error messages.",
+  },
+  {
+    template: "filetype:txt inurl:\"api_key\"",
+    description: "Searches for exposed API keys in plain text files.",
+  },
+  {
+    template: "intitle:\"index of\" \"credentials\"",
+    description: "Searches for open directories containing files related to credentials.",
+  },
+
+  // Searching for exposed backup files
+  {
+    template: "inurl:/backups/ filetype:tar",
+    description: "Searches for TAR backup files exposed in public backup directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"backup\"",
+    description: "Searches for open directories that contain backup files.",
+  },
+  {
+    template: "inurl:/backup/ filetype:gz",
+    description: "Searches for GZ compressed backup files exposed in public backup directories.",
+  },
+
+  // Searching for exposed databases and data dumps
+  {
+    template: "filetype:sql inurl:\"database_dump\"",
+    description: "Searches for exposed SQL database dumps with the keyword 'database_dump' in the URL.",
+  },
+  {
+    template: "intitle:\"index of\" \"database.backup\"",
+    description: "Searches for open directories containing database backup files.",
+  },
+  {
+    template: "inurl:/data/ filetype:csv",
+    description: "Searches for CSV files in publicly exposed data directories that might contain sensitive information.",
+  },
+
+  // Searching for exposed configuration files or source code
+  {
+    template: "filetype:json inurl:\"config\"",
+    description: "Searches for JSON configuration files exposed on public URLs.",
+  },
+  {
+    template: "intitle:\"index of\" \"web.config\"",
+    description: "Searches for open directories containing Microsoft IIS web.config files.",
+  },
+  {
+    template: "inurl:/config/ filetype:php",
+    description: "Searches for exposed PHP configuration files in public config directories.",
+  },
+
+  // Searching for exposed login pages or admin interfaces
+  {
+    template: "inurl:/admin/ filetype:php",
+    description: "Searches for exposed admin PHP files in public admin directories.",
+  },
+  {
+    template: "inurl:/login/ filetype:html",
+    description: "Searches for login pages in exposed public login directories.",
+  },
+  {
+    template: "inurl:/wp-login.php",
+    description: "Finds the WordPress login page exposed publicly.",
+  },
+
+  // Searching for exposed secrets or environment variables
+  {
+    template: "filetype:env intext:\"SECRET_KEY\"",
+    description: "Searches for exposed environment files containing SECRET_KEY.",
+  },
+  {
+    template: "filetype:env intext:\"AWS_ACCESS_KEY_ID\"",
+    description: "Finds environment files that contain AWS Access Keys.",
+  },
+  {
+    template: "inurl:/etc/ \"password\"",
+    description: "Searches for exposed password files within public /etc directories.",
+  },
+
+  // Searching for exposed APIs or Web Services
+  {
+    template: "inurl:/api/v1/ \"api_key\"",
+    description: "Searches for exposed API keys in public API v1 endpoints.",
+  },
+  {
+    template: "inurl:/rest/api/ \"oauth2\"",
+    description: "Searches for exposed OAuth2 API endpoints in public REST APIs.",
+  },
+  {
+    template: "inurl:/swagger/ filetype:json",
+    description: "Finds exposed Swagger API documentation in JSON format.",
+  },
+
+  // Searching for open directories and file listings
+  {
+    template: "intitle:\"index of\" \"uploads\"",
+    description: "Searches for open directories listing uploaded files.",
+  },
+  {
+    template: "intitle:\"index of\" \"files/\"",
+    description: "Searches for open directories containing files in public directories.",
+  },
+  {
+    template: "intitle:\"index of\" \"media/\"",
+    description: "Searches for open directories containing media files like images, videos, etc.",
+  },
+
+  // Searching for exposed admin or configuration URLs
+  {
+    template: "inurl:/admin/ \"config.php\"",
+    description: "Searches for exposed configuration files located under the /admin/ directory.",
+  },
+  {
+    template: "inurl:/config/ \"settings.php\"",
+    description: "Finds exposed PHP configuration files in public /config directories.",
+  },
+  {
+    template: "inurl:/settings/ filetype:xml",
+    description: "Searches for exposed XML configuration files in public settings directories.",
+  },
+
+  // Miscellaneous searches for potentially useful files
+  {
+    template: "inurl:/temp/ filetype:txt",
+    description: "Searches for exposed text files in public /temp/ directories.",
+  },
+  {
+    template: "filetype:log inurl:\"error_log\"",
+    description: "Searches for error log files that may contain sensitive information.",
+  },
+  {
+    template: "intitle:\"index of\" \"images/\" filetype:jpg",
+    description: "Searches for open directories containing JPG image files.",
+  },
+
+  // Searching for exposed user-related information
+  {
+    template: "filetype:txt inurl:\"usernames\"",
+    description: "Searches for exposed text files that may contain a list of usernames.",
+  },
+  {
+    template: "intitle:\"index of\" \"user_data.csv\"",
+    description: "Searches for open directories containing user data in CSV files.",
+  },
+  {
+    template: "inurl:/users/ filetype:json",
+    description: "Searches for exposed JSON files containing user-related data.",
+  },
 ];
 
 export default dorkTemplates;
